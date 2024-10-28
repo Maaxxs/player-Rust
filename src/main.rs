@@ -29,9 +29,8 @@ async fn main() {
 }
 
 async fn identify() -> String {
-    const GIT_HASH: &str = include_str!("../.git/refs/heads/main");
-
-    format!("Bitwars Rust Player (hash: {})", GIT_HASH)
+    let git_hash = env!("GIT_HASH");
+    format!("Bitwars Rust Player (hash: {})", git_hash)
 }
 
 async fn index(Json(payload): Json<GameState>) -> Json<Vec<PlayerAction>> {
