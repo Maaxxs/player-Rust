@@ -1,7 +1,5 @@
-#![allow(non_snake_case)]
 mod logic;
 mod models;
-
 use axum::{
     routing::{get, post},
     Json, Router,
@@ -24,13 +22,14 @@ async fn main() {
     let app = Router::new()
         .route("/", get(identify))
         .route("/", post(index));
+
     let listener = tokio::net::TcpListener::bind(URL).await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
 async fn identify() -> String {
     let git_hash = env!("GIT_HASH");
-    format!("Bitwars Rust Player (hash: {})", git_hash)
+    format!("I was deployed.\nBitwars Rust Player (hash: {})", git_hash)
 }
 
 async fn index(Json(payload): Json<GameState>) -> Json<Vec<PlayerAction>> {
