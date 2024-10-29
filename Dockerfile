@@ -12,6 +12,8 @@ COPY --from=planner /src/recipe.json /src/recipe.json
 RUN cargo chef cook --release --recipe-path /src/recipe.json
 # Build application
 COPY . .
+ARG GIT_HASH
+ENV GIT_HASH=${GIT_HASH}
 RUN cargo build --release --bin player-Rust
 
 # Use scratch image to reduce image size
