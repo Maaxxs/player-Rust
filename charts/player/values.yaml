@@ -56,13 +56,19 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 0
+
 resources:
   limits:
     cpu: 1
     memory: 1Gi
-  requests:
-    cpu: 1
-    memory: 1Gi
+  # requests:
+  #   cpu: 1
+  #   memory: 1Gi
 
 autoscaling:
   enabled: false
