@@ -29,10 +29,7 @@ async fn main() {
 
 async fn identify() -> String {
     let git_hash = env!("GIT_HASH");
-    format!(
-        "strategy pod allowed to be killed: Bitwars Rust Player (hash: {})",
-        git_hash
-    )
+    format!("Bitwars Rust Player (hash: {})", git_hash)
 }
 
 async fn index(Json(payload): Json<GameState>) -> Json<Vec<PlayerAction>> {
