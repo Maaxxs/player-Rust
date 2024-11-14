@@ -29,4 +29,4 @@ LABEL name="player-Rust" \
 EXPOSE 3000
 
 COPY --from=builder /src/target/release/player-Rust /
-CMD ["./player-Rust"]
+ENTRYPOINT ["./player-Rust"]
