@@ -28,6 +28,7 @@ async fn main() {
 }
 
 async fn identify() -> String {
+    debug!("identify called");
     let git_hash = env!("GIT_HASH");
     format!("Bitwars Rust Player (hash: {})", git_hash)
 }

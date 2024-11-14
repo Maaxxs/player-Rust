@@ -1,12 +1,14 @@
 use crate::models::position::Position;
 use serde::Deserialize;
 
-#[derive(Deserialize, Debug, Default, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
+#[derive(Deserialize, Debug, Default, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub struct Base {
     /// Position of the base
     pub position: Position,
     /// Unique ID of the base
     pub uid: u32,
+    /// Name of the base
+    pub name: String,
     /// Owner of the base
     pub player: u32,
     /// Current population of the base
@@ -29,6 +31,7 @@ mod tests {
         let base_null = Base {
             position: Position::default(),
             uid: 0,
+            name: String::new(),
             player: 0,
             population: 0,
             level: 0,
